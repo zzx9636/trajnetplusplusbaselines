@@ -30,8 +30,9 @@ def visualize_colab(data, prediction, n):
                 predicted_paths = [[t for t in pred if t.scene_id == scene_id] for pred in preds]
             pred_paths[label_dict[name]] = predicted_paths[0]
             pred_neigh_paths[label_dict[name]] = predicted_paths[1:]
-
-        fig_list.append(show_colab.predicted_paths(paths, pred_paths))
+        fig = show_colab.predicted_paths(paths, pred_paths)
+        print(fig)
+        fig_list.append(fig)
     
     return fig_list
 
