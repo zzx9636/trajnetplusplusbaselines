@@ -31,7 +31,7 @@ def visualize_colab(data, prediction, n):
             pred_paths[label_dict[name]] = predicted_paths[0]
             pred_neigh_paths[label_dict[name]] = predicted_paths[1:]
 
-        fig_list.append(show.predicted_paths(paths, pred_paths))
+        fig_list.append(show_colab.predicted_paths(paths, pred_paths))
     
     return fig_list
 
