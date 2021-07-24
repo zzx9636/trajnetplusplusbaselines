@@ -8,7 +8,7 @@ def visualize_colab(data, prediction, n):
 
     reader = Reader(data, scene_type='paths')
     scenes = reader.scenes(limit=n, randomize=True)
-    
+    fig_list = []
 
     ## Reader Predictions 
     reader_list = {}
@@ -31,8 +31,9 @@ def visualize_colab(data, prediction, n):
             pred_paths[label_dict[name]] = predicted_paths[0]
             pred_neigh_paths[label_dict[name]] = predicted_paths[1:]
 
-        with show.predicted_paths(paths, pred_paths):
-            pass
+        fig_list.append(show.predicted_paths(paths, pred_paths))
+    
+    return fig_list
 
 def main():
     parser = argparse.ArgumentParser()
