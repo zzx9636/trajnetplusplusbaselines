@@ -1,7 +1,38 @@
 import argparse
 from trajnetplusplustools.reader import Reader
-from trajnetplusplustools import show
+from trajnetplusplustools import show, show_colab
 
+
+def visualize_colab(data, prediction, n):
+
+
+    reader = Reader(data, scene_type='paths')
+    scenes = reader.scenes(limit=n, randomize=True)
+    
+
+    ## Reader Predictions 
+    reader_list = {}
+    label_dict = {}
+    for i, dataset_file in enumerate(prediction):
+        name = dataset_file.split('/')[-2]
+        label_dict[name] = name
+        reader_list[name] = Reader(dataset_file, scene_type='paths')
+
+    ## Visualize
+    pred_paths = {}
+    pred_neigh_paths = {}
+    for scene_id, paths in scenes:
+        print("Scene ID: ", scene_id)
+        for dataset_file in prediction:
+            name = dataset_file.split('/')[-2]
+            scenes_pred = reader_list[name].scenes(ids=[scene_id])
+            for scene_id, preds in scenes_pred:
+                predicted_paths = [[t for t in pred if t.scene_id == scene_id] for pred in preds]
+            pred_paths[label_dict[name]] = predicted_paths[0]
+            pred_neigh_paths[label_dict[name]] = predicted_paths[1:]
+
+        with show.predicted_paths(paths, pred_paths):
+            pass
 
 def main():
     parser = argparse.ArgumentParser()
