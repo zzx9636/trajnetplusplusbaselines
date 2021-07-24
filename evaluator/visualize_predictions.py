@@ -3,12 +3,12 @@ from trajnetplusplustools.reader import Reader
 from trajnetplusplustools import show, show_colab
 
 
-def visualize_colab(data, prediction, n):
+def visualize_colab(data, prediction, ax):
 
 
     reader = Reader(data, scene_type='paths')
-    scenes = reader.scenes(limit=n, randomize=True)
-    fig_list = []
+    scenes = reader.scenes(limit=1, randomize=True)
+    # fig_list = []
 
     ## Reader Predictions 
     reader_list = {}
@@ -30,11 +30,11 @@ def visualize_colab(data, prediction, n):
                 predicted_paths = [[t for t in pred if t.scene_id == scene_id] for pred in preds]
             pred_paths[label_dict[name]] = predicted_paths[0]
             pred_neigh_paths[label_dict[name]] = predicted_paths[1:]
-        fig = show_colab.predicted_paths(paths, pred_paths)
-        print(fig)
-        fig_list.append(fig)
+        show_colab.predicted_paths(paths, pred_paths, ax)
+    #     print(fig)
+    #     fig_list.append(fig)
     
-    return fig_list
+    # return fig_list
 
 def main():
     parser = argparse.ArgumentParser()
