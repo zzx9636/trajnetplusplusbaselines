@@ -434,10 +434,10 @@ def main():
             results = {submit_datasets[i].replace(args.path, '').replace('.ndjson', ''): results_list[i] 
                        for i in range(len(true_datasets))}
 
-            print(results)
+            #print(results)
             ## Generate results
             final_result, sub_final_result = table.add_entry(labels[num], results)
-
+            print(sub_final_result)
             # ## Save results as pkl (to avoid computation again)
             # os.makedirs(result_file)
             # with open(result_file + '/results.pkl', 'wb') as handle:
