@@ -252,5 +252,4 @@ class Table(object):
 
         # fig = ax.get_figure()
         fig.savefig('Results.png')
-        plt.show()
     
