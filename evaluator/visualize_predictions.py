@@ -7,7 +7,7 @@ def visualize_colab(data, prediction, ax, id=0):
 
 
     reader = Reader(data, scene_type='paths')
-    if id>0:
+    if id<0:    
         scenes = reader.scenes(limit=1, randomize=True)
     else:
         scenes = reader.scenes(ids=id, randomize=False)
