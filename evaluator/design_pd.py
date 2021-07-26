@@ -137,10 +137,10 @@ class Table(object):
         return ax
 
     def all_chart(self):
-        fig = plt.figure(figsize=(20, 20))
+        fig = plt.figure(figsize=(20, 15))
     # ------------------------------------------ TABLES -------------------------------------------
         # Overall Table #
-        ax1 = fig.add_subplot(311)
+        ax1 = fig.add_subplot(211)
         ax1.axis('tight')
         ax1.axis('off')
 
@@ -150,11 +150,11 @@ class Table(object):
         for key in self.results:
             df.loc[it] = ['Overall'] + [key[:len_name]] + [self.results[key][index].__format__('.2f') for index in range(32, 40)] + [self.collision_test[key]]
             it += 1
-        ax1 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, 0.9, 1, 0.1*len(self.results)], ax=ax1)
+        ax1 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, 0.9, 1, 0.2*len(self.results)], ax=ax1)
 
 
 
-        ax2 = fig.add_subplot(312)
+        ax2 = fig.add_subplot(212)
         ax2.axis('tight')
         ax2.axis('off')
         # Overall Table #
@@ -225,7 +225,7 @@ class Table(object):
             it += 1
 
 
-        ax2 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, -1.6, 1, 0.6*len(self.results)], ax=ax2)
+        ax2 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, 0.5, 1, 1*len(self.results)], ax=ax2)
 
         ## SYNTH
         # ax3 = fig.add_subplot(313)
@@ -252,4 +252,5 @@ class Table(object):
 
         # fig = ax.get_figure()
         fig.savefig('Results.png')
+        plt.show()
     
