@@ -400,7 +400,6 @@ def main():
     table = Table()
 
     for num, name in enumerate(names):
-        print(name)
 
         result_file = args.path.replace('pred', 'results') + name
 
@@ -437,7 +436,7 @@ def main():
             #print(results)
             ## Generate results
             final_result, sub_final_result = table.add_entry(labels[num], results)
-            print(sub_final_result)
+            #print(sub_final_result)
             # ## Save results as pkl (to avoid computation again)
             # os.makedirs(result_file)
             # with open(result_file + '/results.pkl', 'wb') as handle:
