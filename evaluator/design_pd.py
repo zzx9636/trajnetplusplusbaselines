@@ -225,7 +225,7 @@ class Table(object):
             it += 1
 
 
-        ax2 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, 0.5, 1, 1*len(self.results)], ax=ax2)
+        ax2 = self.render_mpl_table(df, header_columns=0, col_width=2.0, bbox=[0, 0, 1, 1*len(self.results)], ax=ax2)
 
         ## SYNTH
         # ax3 = fig.add_subplot(313)

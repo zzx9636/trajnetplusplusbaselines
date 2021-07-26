@@ -3,11 +3,15 @@ from trajnetplusplustools.reader import Reader
 from trajnetplusplustools import show, show_colab
 
 
-def visualize_colab(data, prediction, ax):
+def visualize_colab(data, prediction, ax, id=0):
 
 
     reader = Reader(data, scene_type='paths')
-    scenes = reader.scenes(limit=1, randomize=True)
+    if id>0:
+        scenes = reader.scenes(limit=1, randomize=True)
+    else:
+        scenes = reader.scenes(ids=id, randomize=True)
+
     # fig_list = []
 
     ## Reader Predictions 
