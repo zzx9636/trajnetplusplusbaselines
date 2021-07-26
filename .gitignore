@@ -6,7 +6,7 @@ goal_files/
 
 #DATA_BLOCK/
 output/
-OUTPUT_BLOCK/
+OUTPUT_BLOCK/AI4ALL_data
 socialforce-master/
 profile_trace*.json
 Python-RVO2-master/
